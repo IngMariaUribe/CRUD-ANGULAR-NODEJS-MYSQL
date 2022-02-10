@@ -1,0 +1,58 @@
+###
+POST http://localhost:4000/products/create 
+Content-Type: application/json
+
+{
+    "product":"cartones",
+    "category":"papeleria",
+    "subcategory":"escolar",
+    "price":20000,
+    "quantity":"20",
+    "provider":"provider35"
+
+}
+###
+GET http://localhost:4000/products/consult/27
+
+
+
+###
+DELETE  http://localhost:4000/products/delete/5000
+
+###
+PUT  http://localhost:4000/products/update/37
+Content-Type: application/json
+
+{
+    
+    "provider":"the prov"
+    
+}
+###
+POST http://localhost:4000/providers/create 
+Content-Type: application/json
+
+{
+    "provider":"Proveedor 1",
+    "celphone":"366689",
+    "mail":"provider1@gmail.com"
+      
+}
+
+###
+DELETE  http://localhost:4000/providers/delete/8
+###
+PUT  http://localhost:4000/providers/update/7
+Content-Type: application/json
+
+{
+    "celphone":"00000"    
+}
+
+###
+GET http://localhost:4000/providers/read
+
+###
+GET http://localhost:4000/providers/read/7
+###
+GET http://localhost:4000/category/read

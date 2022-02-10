@@ -1,0 +1,80 @@
+<button class=" btn " routerLink="/productComp">
+  <img src="../assets/img/atras.png" height="50">
+</button>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+  <div class="fluid-container col-8 m-4 p-5" id="main-container">
+    <h1>Crear nuevo registro </h1>
+    <hr />
+    <div class="row g-2 p-3">
+      <div class="col-md">
+        <div class="form-floating">
+          <input type="text" formControlName="product" class="form-control" id="productInput"
+            placeholder="Nombre del producto">
+          <label for="productInput">Producto</label>
+        </div>
+      </div>
+      <div class="col-md">
+        <div class="form-floating">
+          <select class="form-select" formControlName="category" id="categoryinput"
+            aria-label="Floating label select example">
+            <option selected>Seleccionar</option>
+            <option [value]="item.category" *ngFor="let item of categories">{{item.category}}</option>          </select>
+          <label for="categoryinput">Tipo</label>
+        </div>
+      </div>
+      <div class="col-md ">
+        <div class="form-floating">
+          <select class="form-select" formControlName="subcategory" id="subcategoryinput"
+            aria-label="Floating label select example">
+            <option selected>Seleccionar</option>
+            <option [value]="item.sub" *ngFor="let item of categories">{{item.sub}}</option>          </select>
+          <label for="subcategoryinput">Subtipo</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-3 row g-3">
+      <div class="col-3">
+        <label for="pd" class="form-label">Precio: </label>
+        <div class="form-row" id="pd">
+          <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="number" formControlName="price" value="1000" min="0" step="0.01" data-number-to-fixed="2"
+              data-number-stepfactor="100" class="form-control currency" id="precio" />
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <label for="cd" class="form-label">Cantidad: </label>
+        <div class="form-row" id="cd">
+          <div class="input-group ">
+            <input type="number" formControlName="quantity" value="10" min="0" step="1" data-number-to-fixed="2"
+              data-number-stepfactor="100" class="form-control currency" id="cantidad" />
+            <span class="input-group-text">und</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <label for="proveedor" class="form-label">Proveedor: </label>
+
+        <select class="form-select" formControlName="provider" id="proveedor"
+          aria-label="Floating label select example">
+          <option selected>Seleccionar</option>
+          <option [value]="item.provider" *ngFor="let item of providers">{{item.provider}}</option>
+                   
+        </select>
+
+      </div>
+      <div class="input-group col-auto  mb-3">
+        <span class="input-group-text">Observaciones</span>
+        <textarea class="form-control" formControlName="observations" aria-label="With textarea"></textarea>
+
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary" routerLink="/ProductsComponent">Crear</button>
+      </div>
+    </div>
+  </div>
+</form>

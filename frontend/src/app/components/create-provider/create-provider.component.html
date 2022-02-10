@@ -1,0 +1,44 @@
+<form [formGroup]="providerForm" (ngSubmit)="onSubmit()">
+
+  <div class="fluid-container col-sm-8 m-4 p-5" id="main-container">
+    <h1>Registrar nuevo proveedor</h1>
+    <hr />
+    <div class="p-3 row g-3">
+      <div class="col-4">
+        <label for="pd" class="form-label">Nombre : </label>
+        <div class="form-row" id="pd">
+          <input type="text" formControlName="provider" class="form-control " />
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label for="td" class="form-label">Telefono: </label>
+        <div class="form-row" id="td">
+          <input type="tel" formControlName="celphone" class="form-control " />
+        </div>
+      </div>
+      <div class="col-5">
+        <label for="cd" class="form-label">Correo: </label>
+        <div class="form-row" id="cd">
+          <div class="input-group ">
+            <input type="email" formControlName="mail" class="form-control" pattern=".+@globex\.com" required>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 p-3">
+      <button type="submit" class="btn btn-primary">Crear</button>
+    </div>
+  </div>      
+</form>
+<div *ngFor="let provider of providers">
+        
+  {{provider.provider}}
+   
+
+  
+</div>
+<!--
+  <button type="button" class="btn" (click)="readProvider(provider = provider)">
+<img src="../assets/img/eliminar.png" height="50">
+</button>
+-->

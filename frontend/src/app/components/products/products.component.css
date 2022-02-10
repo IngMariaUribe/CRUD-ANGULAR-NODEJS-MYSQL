@@ -1,0 +1,13 @@
+#main-container{
+    width: 800px;
+    margin: 0 auto;
+}
+#main-container2{
+    display:none ;
+
+}
+@media screen and (max-width: 800px){
+    #main-container{
+        width: 100%;
+    }
+}
