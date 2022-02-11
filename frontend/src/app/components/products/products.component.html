@@ -36,14 +36,14 @@
           </td>
 
           <td>
-            <button type="button" class="btn " (click)="consultProduct(producto = product)"
+            <button type="button" class="btn " (click)="consultProduct(product)"
               onclick="document.getElementById('main-container2').style.display='block'">
               <img src="../assets/img/editar.png" height="40">
 
             </button>
           </td>
           <td>
-            <button type="button" class="btn" (click)="deleteProduct(producto = product)">
+            <button type="button" class="btn" (click)="deleteProduct(product)">
               <img src="../assets/img/eliminar.png" height="40">
             </button>
           </td>
@@ -84,7 +84,7 @@
         <div class="form-floating">
           <select class="form-select" formControlName="subcategory" id="subcategoryinput"
             aria-label="Floating label select example">
-            <option selected>Seleccionar</option>
+            <option selected>Seleccionar</option> 
             <option [value]="item.sub" *ngFor="let item of categories">{{item.sub}}</option>
           </select>
           <label for="subcategoryinput">Subtipo</label>
