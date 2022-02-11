@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 import { ProductService } from './../../services/product.service';
@@ -41,7 +41,8 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   providers: Provider[] = [];
   categories: Category[] = [];
-  constructor(private service: ProductService) { }
+
+  constructor(private service: ProductService, private  ngZone:NgZone) { }
   producto: Product | null = null;
 
   productFormp = new FormGroup({
@@ -66,20 +67,20 @@ export class ProductsComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.service.getProduct().subscribe((data: any) => {
-      this.products = data;
-      console.log(data);
-    });
+  this.readProducts();
     this.readProvider(this.provider);
     this.readCategory(this.category);
   }
 
 
-  readProducts(product: Product) {
-    this.service.getProduct().subscribe((data: any) => {
-      this.products = data;
-      console.log(data);
-    });
+  readProducts(product?: Array<Product>) {
+ 
+      this.service.getProduct().subscribe((data: any) => {
+        this.products = data;
+        console.log(data);
+      });
+      
+    
   }
 
   consultProduct(p: Product) {
@@ -89,7 +90,7 @@ export class ProductsComponent implements OnInit {
     });
     if (this.producto != null) {
       this.currentItem = this.producto.id;
-      this.readProducts(this.producto);
+      this.readProducts();
       this.formdefault(this.producto);
       this.producto = p;
     }
@@ -122,11 +123,10 @@ export class ProductsComponent implements OnInit {
           'Este registro ha sido eliminado exitosamente',
           'success'
         )
-        this.service.deleteProduct(product, product.id).subscribe((data: any) => {
-          this.products = data;
+        this.service.deleteProduct(product, product.id).subscribe((data: Array<Product>) => {
+       this.readProducts();
         });
-          this.consultProduct(product);
-          this.readProducts(product);
+          
       }
     })
 
